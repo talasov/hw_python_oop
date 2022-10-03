@@ -64,9 +64,9 @@ class Running(Training):
                            hour_in_minutes: int = 60) -> float:
         """Получить количество затраченных калорий."""
 
-        count_calories = (coeff_calorie_1 * self.get_mean_speed() -
-                          coeff_calorie_2) * self.weight / self.M_IN_KM * (
-                                 self.duration * hour_in_minutes)
+        avg_speed = (coeff_calorie_1 * self.get_mean_speed() - coeff_calorie_2)
+        training_time = self.duration * hour_in_minutes
+        count_calories = avg_speed * self.weight / self.M_IN_KM * training_time
         return count_calories
 
 
