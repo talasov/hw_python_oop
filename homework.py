@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Dict, Type
 
 
 @dataclass
@@ -112,7 +113,7 @@ class Swimming(Training):
         return avg_speed / self.duration
 
     def get_spent_calories(self, cf_1=1.1, cf_2=2) -> float:
-        """Получить количество затраченых калорий."""
+        # Получить количество затраченых калорий.
         return (self.get_mean_speed() + cf_1) * cf_2 * self.weight
 
     def get_distance(self) -> float:
@@ -122,7 +123,6 @@ class Swimming(Training):
 
 def read_package(workout_types: str, list_data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
-    from typing import Dict, Type
 
     dict_training: Dict[str, Type[Training]] = {
         'SWM': Swimming,
